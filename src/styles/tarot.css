@@ -1,0 +1,247 @@
+/* 塔罗牌占卜系统 响应式样式，适配PC与移动端 */
+
+/* 全局根节点全屏适配 */
+html, body {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: linear-gradient(135deg, #ede3c7 0%, #e0cfa7 100%);
+  overflow-x: hidden;
+}
+
+/* 主体容器 */
+.tarot-main {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px 0 32px 0;
+  background: transparent;
+  font-family: serif;
+  display: block;
+}
+@media (min-width: 601px) {
+  .tarot-main {
+    max-width: none;
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 0 32px 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    display: block;
+  }
+}
+
+/* 标题 */
+.tarot-title {
+  color: #7c5c36;
+  font-size: 3.2rem;
+  text-align: center;
+  margin-bottom: 1.8em;
+  letter-spacing: 0.14em;
+  font-weight: bold;
+  text-shadow: 0 2px 12px #e0cfa7, 0 1.5px 0 #fff;
+  line-height: 1.2;
+}
+
+/* 占卜方式选择 */
+.tarot-mode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5em;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
+  font-size: 1.1rem;
+}
+
+/* 抽牌按钮 */
+.tarot-draw-btn {
+  display: block;
+  margin: 0 auto 1.5em auto;
+  background: #7c5c36;
+  color: #fffbe6;
+  font-family: serif;
+  font-size: 1.25rem;
+  padding: 0.7em 2.8em;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #7c5c3633;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+}
+.tarot-draw-btn:hover {
+  background: #a08c6b;
+  box-shadow: 0 6px 24px #7c5c36aa;
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* 卡牌展示区 */
+.tarot-cards-row {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.2em;
+  overflow-x: auto;
+  padding-bottom: 1.2em;
+  margin: 2.2em auto 2.2em auto;
+  scrollbar-width: thin;
+  scrollbar-color: #a08c6b #ede3c7;
+}
+@media (min-width: 601px) {
+  .tarot-cards-row {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 3em;
+    gap: 2.8em;
+  }
+}
+.tarot-cards-row::-webkit-scrollbar {
+  height: 8px;
+}
+.tarot-cards-row::-webkit-scrollbar-thumb {
+  background: #a08c6b;
+  border-radius: 4px;
+}
+
+/* 单张卡牌外壳 */
+.tarot-card-wrap {
+  flex: 0 0 auto;
+  width: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.18s, box-shadow 0.18s;
+  box-shadow: 0 2px 16px #bba77a33;
+  border-radius: 12px;
+  background: #f8f3e6;
+  border: 1.5px solid #e0cfa7;
+}
+.tarot-card-wrap:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 8px 32px #7c5c36aa, 0 1.5px 0 #fff;
+  z-index: 2;
+}
+
+/* 卡牌解读 */
+.tarot-card-desc {
+  font-family: serif;
+  color: #7c5c36;
+  margin-top: 0.5em;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* 三张牌的标签 */
+.tarot-card-label {
+  color: #a08c6b;
+  font-size: 0.95rem;
+  margin-top: 0.2em;
+  text-align: center;
+}
+
+/* 响应式：移动端适配 */
+@media (max-width: 600px) {
+  html, body {
+    height: 100vh;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+  .tarot-main {
+    width: 100vw;
+    /* height: auto; */
+    min-height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    padding: 40px 0 24px 0;
+    box-shadow: none;
+  }
+  .tarot-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.8em;
+  }
+  .tarot-cards-row {
+    flex-direction: column;
+    gap: 1.2em;
+    padding-bottom: 0.2em;
+    align-items: center;
+  }
+  .tarot-card-wrap {
+    margin: 0.2rem auto;
+  }
+  .tarot-card-desc {
+    font-size: 0.92rem;
+  }
+  .tarot-cards-row {
+    display: block;
+  }
+}
+
+/* 智能分析 markdown 样式美化 */
+.tarot-analysis {
+  background: #f8f3e6;
+  border: 1.5px solid #e0cfa7;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px #bba77a33;
+  padding: 2em 2.2em 2em 2.2em;
+  margin: 2.2em auto 2em auto;
+  max-width: 700px;
+  color: #3b3b3b;
+  font-size: 1.13rem;
+  line-height: 1.85;
+  overflow-x: auto;
+  word-break: break-word;
+}
+.tarot-analysis-title {
+  font-size: 1.18em;
+  font-weight: bold;
+  color: #7c5c36;
+  margin-bottom: 1.1em;
+  letter-spacing: 0.08em;
+  text-shadow: 0 1px 0 #fff;
+}
+.tarot-analysis h1,
+.tarot-analysis h2,
+.tarot-analysis h3,
+.tarot-analysis h4 {
+  color: #7c5c36;
+  font-weight: bold;
+  margin: 1.2em 0 0.7em 0;
+  line-height: 1.3;
+}
+.tarot-analysis ul,
+.tarot-analysis ol {
+  margin: 0.7em 0 0.7em 1.5em;
+  padding-left: 1.2em;
+}
+.tarot-analysis li {
+  margin-bottom: 0.3em;
+}
+.tarot-analysis p {
+  margin: 0.7em 0;
+}
+.tarot-analysis hr {
+  border: none;
+  border-top: 1.5px dashed #e0cfa7;
+  margin: 1.2em 0;
+}
+.tarot-analysis strong {
+  color: #a08c6b;
+  font-weight: bold;
+}
+.tarot-analysis code {
+  background: #f3e9d7;
+  color: #7c5c36;
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  font-size: 0.98em;
+}
