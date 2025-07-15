@@ -69,7 +69,7 @@ function TarotCard({
         boxShadow: '0 4px 16px #7c5c36aa',
         borderRadius: '12px',
         background: '#f5ecd7',
-        margin: '8px',
+        margin: '8px auto',
         display: 'block',
       }}
     />

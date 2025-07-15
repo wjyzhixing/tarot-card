@@ -125,7 +125,7 @@ function TarotDraw() {
       </button>
       <div className="tarot-cards-row">
         {result.map((card, idx) => (
-          <div key={card.number} className="tarot-card-wrap">
+          <div key={card.number} className="tarot-card-wrap-change">
             <TarotCard
               name={card.name}
               number={card.number}
