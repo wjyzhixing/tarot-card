@@ -29,6 +29,8 @@ function TarotDraw() {
   const [result, setResult] = useState([]);
   const [analyzing, setAnalyzing] = useState(false);
   const [analysis, setAnalysis] = useState("");
+  // 新增：用于存储用户输入的占卜点
+  const [question, setQuestion] = useState("");
 
   const handleDraw = () => {
     let count = mode === "single" ? 1 : 3;
@@ -44,7 +46,8 @@ function TarotDraw() {
     setAnalysis("");
     try {
       // 组装 prompt
-      const prompt = result.map((card, idx) => {
+      const userPrompt = question ? `用户想占卜的点：${question}\n` : "";
+      const prompt = userPrompt + result.map((card, idx) => {
         let label = mode === "three" ? ["过去", "现在", "未来"][idx] + "：" : "";
         return `${label}${card.name}（${card.position}）：${card.position === "正位" ? card.upright : card.reversed}`;
       }).join("\n");
@@ -96,6 +99,18 @@ function TarotDraw() {
             {m.label}
           </label>
         ))}
+      </div>
+      {/* 新增：选填的占卜点输入框 */}
+      <div className="tarot-question" style={{ margin: "16px 0" }}>
+        <label style={{ marginRight: 8 }}>你想占卜的点（选填）：</label>
+        <input
+          type="text"
+          value={question}
+          onChange={e => setQuestion(e.target.value)}
+          placeholder="例如：感情、事业、健康……"
+          className="tarot-question-input"
+          style={{ width: 260 }}
+        />
       </div>
       <button className="tarot-draw-btn" onClick={handleDraw}>
         抽牌
